@@ -28,11 +28,11 @@ typedef struct {
 } sp_vec3_t;
 
 typedef struct {
-	int32_t t1;
-	int32_t t2;
+	float t1;
+	float t2;
 } sp_tuple_t;
 
-int32_t sp_dot(const sp_vec3_t *vec1, const sp_vec3_t *vec2) {	
+float sp_dot(const sp_vec3_t *vec1, const sp_vec3_t *vec2) {	
 	return ((vec1->x * vec2->x) + (vec1->y * vec2->y) + (vec1->z * vec2->z));
 }
 
@@ -64,28 +64,28 @@ sp_tuple_t sp_intersect_ray_sphere(sp_vec3_t camera_pos, sp_vec3_t ray_direction
 	int32_t r = sphere.radius;
 	sp_vec3_t CO = sp_vec3_sub(camera_pos, sphere.center);
 
-	int32_t a = sp_dot(&ray_direction, &ray_direction);
-	int32_t b = 2 * sp_dot(&CO, &ray_direction);
-	int32_t c = sp_dot(&CO, &CO) - r * r;
+	float a = sp_dot(&ray_direction, &ray_direction);
+	float b = 2 * sp_dot(&CO, &ray_direction);
+	float c = sp_dot(&CO, &CO) - r * r;
 
-	int32_t discriminant = b * b - 4 * a * c;
+	float discriminant = b * b - 4.0f * a * c;
 	if (discriminant < 0) {
-		return (sp_tuple_t) {.t1 = SP_INFINITY, .t2 = SP_INFINITY};
+		return (sp_tuple_t) {.t1 = (float) SP_INFINITY, .t2 = (float) SP_INFINITY};
 	}
 
 	return (sp_tuple_t) {
-		.t1 = (-b + sqrt(discriminant)) / (2 * a),
-		.t2 = (-b - sqrt(discriminant)) / (2 * a)
+		.t1 = (float) (-b + sqrt(discriminant)) / (2.0f * a),
+		.t2 = (float) (-b - sqrt(discriminant)) / (2.0f * a)
 	};
 }
 
 #include <stdbool.h>
-bool sp_in_range(int32_t val, int32_t min, int32_t max) {	
+bool sp_in_range(float val, float min, float max) {	
 	return (val > min && val < max);
 }
 
-int32_t sp_trace_ray(sp_vec3_t camera_pos, sp_vec3_t ray_direction, int32_t t_min, int32_t t_max, sp_sphere_t scene[]) {
-	int32_t t_closest = SP_INFINITY;
+int32_t sp_trace_ray(sp_vec3_t camera_pos, sp_vec3_t ray_direction, float t_min, float t_max, sp_sphere_t scene[]) {
+	float t_closest = (float) SP_INFINITY;
 	sp_sphere_t *closest_sphere = NULL;
 
 	for (size_t i = 0; i < SPHERE_COUNT; ++i) {
@@ -112,14 +112,14 @@ int32_t sp_trace_ray(sp_vec3_t camera_pos, sp_vec3_t ray_direction, int32_t t_mi
 int32_t canvas[C_WIDTH * C_HEIGHT];
 
 void sp_canvas_put_pixel(sp_vec3_t coords, uint32_t color) {
-	int32_t screen_x = (C_WIDTH / 2) + coords.x;
-	int32_t screen_y = (C_HEIGHT / 2) - coords.y - 1;
+	float screen_x = (C_WIDTH / 2.0f) + coords.x;
+	float screen_y = (C_HEIGHT / 2.0f) - coords.y - 1;
 
 	if (screen_x < 0 || screen_x >= C_WIDTH || screen_y < 0 || screen_y >= C_HEIGHT) {
 		return;
 	}
 
-	canvas[screen_x + screen_y * C_WIDTH] = color;
+	canvas[(int32_t) screen_x + (int32_t) screen_y * C_WIDTH] = color;
 }
 
 #define ALPHA 4
@@ -135,7 +135,7 @@ int main(void) {
 	sp_sphere_t sphere_red = {
 		.center = {
 			.x = 0.0f,
-			.y = -1.0,
+			.y = -1.0f,
 			.z = 3.0f
 		},
 		.radius = 1,
@@ -166,8 +166,8 @@ int main(void) {
 		sphere_red, sphere_green, sphere_blue
 	};
 
-	for (int32_t xx = -C_WIDTH / 2; xx < C_WIDTH / 2; ++xx) {
-		for (int32_t yy = -C_HEIGHT / 2; yy < C_HEIGHT / 2; ++yy) {
+	for (float xx = -C_WIDTH / 2.0f; xx < C_WIDTH / 2.0f; ++xx) {
+		for (float yy = -C_HEIGHT / 2.0f; yy < C_HEIGHT / 2.0f; ++yy) {
 			sp_vec3_t coords = {
 				.x = xx,
 				.y = yy,

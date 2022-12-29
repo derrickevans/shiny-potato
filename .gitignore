@@ -1,5 +1,5 @@
-# PNG Output
-*.png
+# Test PNG Output
+test.png
 
 # Prerequisites
 *.d

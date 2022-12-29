@@ -15,7 +15,7 @@ IF "%ARG%"=="help" (
 REM Save project root directory path.
 SET PROJECT_ROOT=%cd%
 
-SET EXECTUABLE_NAME=sp
+SET EXECUTABLE_NAME=sp
 SET SRC=..\src
 
 REM Check if 'DevEnvDir' is defined. If not, call vcvarsall.bat.
@@ -39,7 +39,7 @@ IF DEFINED RELEASE (
 	SET CFLAGS=/std:c11 /TC /Ot
 )
 
-cl %CFLAGS% %SRC%\main.c /Fe: %EXECUTABLE_NAME%
+cl %CFLAGS% %SRC%\main.c /Fe: %EXECUTABLE_NAME%.exe
 
 
 POPD
