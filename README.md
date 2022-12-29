@@ -26,4 +26,10 @@ clean.bat
 
 ```c
 // TODO: Setup gcc build scripts and steps.
-``` 
+```
+
+### Images
+
+![alt text][part-1-basic-raytracing]
+
+[part-1-basic-raytracing]: https://github.com/derrickevans/shiny-potato/blob/master/images/part_1_basic_raytracing.png "Part 1 - Basic Raytacing"
