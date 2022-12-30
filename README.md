@@ -3,9 +3,9 @@ shiny-potato (name recommended by github) is a software renderer written in C wi
 
 ## Getting Started
 
-### MS CL
-
 From project root:
+
+### Building with MS CL
 
 Builds the exectuable.
 ```shell
@@ -14,15 +14,15 @@ Builds the exectuable.
 
 Runs the exectuable.
 ```shell
-> run.bat
+> build.bat run
 ```
 
 Removes all bin and debug files.
 ```shell
-> clean.bat
+> build.bat clean
 ```
 
-### GCC
+### Building with GCC
 
 Build the executable.
 ```shell
