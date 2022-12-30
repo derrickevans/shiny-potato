@@ -9,23 +9,34 @@ From project root:
 
 Builds the exectuable.
 ```shell
-build.bat
+> build.bat
 ```
 
 Runs the exectuable.
 ```shell
-run.bat
+> run.bat
 ```
 
 Removes all bin and debug files.
 ```shell
-clean.bat
+> clean.bat
 ```
 
 ### GCC
 
-```c
-// TODO: Setup gcc build scripts and steps.
+Build the executable.
+```shell
+$ ./build.sh
+```
+
+Runs the executable.
+```shell
+$ ./build.sh run
+```
+
+Removes all bin and debug files.
+```shell
+$ ./build.sh clean
 ```
 
 ### Images
