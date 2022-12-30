@@ -3,20 +3,33 @@
 SET ARG=%1
 SET RELEASE=
 
-REM If the first command line argument is set to 'release' define release.
-IF "%ARG%"=="release" SET RELEASE=release
-REM If the first command line arguement is set to 'help' display the help list.
-IF "%ARG%"=="help" (
-	@ECHO ON
-	echo "PRINTING HELP..."
-	@ECHO OFF
-)
-
 REM Save project root directory path.
 SET PROJECT_ROOT=%cd%
 
 SET EXECUTABLE_NAME=sp
 SET SRC=..\src
+
+REM If the first command line argument is set to 'release': define release.
+IF "%ARG%"=="release" SET RELEASE=release
+
+REM If the first command line arguement is set to 'run': run the exectuable.
+IF "%ARG%"=="run" (
+	IF NOT EXIST bin (
+		@ECHO ON
+		ECHO "bin directory does not exist. Nothing to run."
+		@ECHO OFF
+		EXIT /B
+	)
+	.\bin\%EXECUTABLE_NAME%.exe
+	EXIT /B
+)
+
+REM If the first command line argument is set to 'clean': remove all bin and test.png files.
+IF "%ARG%"=="clean" (
+	IF EXIST bin RMDIR /S /Q bin
+	IF EXIST test.png DEL /Q test.png
+	EXIT /B
+)
 
 REM Check if 'DevEnvDir' is defined. If not, call vcvarsall.bat.
 REM This is to resolve the path growing too large when calling vcvar64.bat multiple times.
