@@ -1,6 +1,9 @@
 # Test PNG Output
 test.png
 
+# RDBG Session
+*.rdbg
+
 # Prerequisites
 *.d
 
