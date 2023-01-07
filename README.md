@@ -41,6 +41,26 @@ $ ./build.sh clean
 
 ### Images
 
-![alt text][part-1-basic-raytracing]
+#### Part 1: Basic Raytracing
 
-[part-1-basic-raytracing]: https://github.com/derrickevans/shiny-potato/blob/master/images/part_1_basic_raytracing.png "Part 1 - Basic Raytacing"
+![basic][part-1-basic-raytracing]
+
+#### Part 1: Light
+
+##### Before Diffuse
+
+![before-diffuse][part-1-before-diffuse]
+
+##### After Diffuse
+
+![after-diffuse][part-1-after-diffuse]
+
+##### Specular
+
+![specular][part-1-specular]
+
+[part-1-basic-raytracing]: images/part_1_basic_raytracing.png "Part 1 - Basic Raytacing"
+[part-1-before-diffuse]: images/part_1_before_diffuse.png "Part 1 - Before Diffuse"
+[part-1-after-diffuse]: images/part_1_after_diffuse.png "Part 1 - After Diffuse"
+[part-1-specular]: images/part_1_specular.png "Part 1 - Specular"
+
