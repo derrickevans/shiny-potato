@@ -62,5 +62,5 @@ $ ./build.sh clean
 [part-1-basic-raytracing]: images/part_1_basic_raytracing.png "Part 1 - Basic Raytacing"
 [part-1-before-diffuse]: images/part_1_before_diffuse.png "Part 1 - Before Diffuse"
 [part-1-after-diffuse]: images/part_1_after_diffuse.png "Part 1 - After Diffuse"
-[part-1-specular]: images/part-1-specular.png "Part 1 - Specular"
+[part-1-specular]: images/part_1_specular.png "Part 1 - Specular"
 
